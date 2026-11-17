@@ -1,0 +1,31 @@
+name: Bug
+description: Algo no se comporta como dice el diseño
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: "⚠️ No pegues llaves de API, tokens ni el contenido de tu `.env`: este repositorio es público."
+  - type: textarea
+    id: pasos
+    attributes:
+      label: Pasos para reproducir
+      placeholder: "curl -i -X DELETE localhost:3000/api/v1/suscripciones -H 'Content-Type: application/json' -d '{\"id\":1}'"
+    validations:
+      required: true
+  - type: textarea
+    id: esperado
+    attributes:
+      label: Comportamiento esperado
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Comportamiento actual
+    validations:
+      required: true
+  - type: input
+    id: referencia
+    attributes:
+      label: Requerimiento o caso límite afectado
+      placeholder: "RF-04 / caso límite DELETE: id como string"

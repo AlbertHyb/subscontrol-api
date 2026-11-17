@@ -1,0 +1,24 @@
+name: Issue de hito
+description: Una tarea de un hito del plan (ej. Issue 2.3)
+labels: ["tarea"]
+body:
+  - type: input
+    id: id
+    attributes:
+      label: ID del issue
+      placeholder: "2.3"
+    validations:
+      required: true
+  - type: textarea
+    id: descripcion
+    attributes:
+      label: Qué hay que hacer
+    validations:
+      required: true
+  - type: textarea
+    id: aceptacion
+    attributes:
+      label: Criterios de aceptación
+      description: Códigos de estado y casos límite que deben cumplirse (ver docs/designs/subscontrol.md)
+    validations:
+      required: true
