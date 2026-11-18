@@ -3,12 +3,12 @@ const service = require('../services/suscripciones.service');
 
 const PERIODOS = ['semanal', 'mensual', 'anual'];
 
-// Convierte el id recibido (número o string numérico) a entero positivo; null si es inválido.
+// Acepta un número JSON entero positivo, o un string de solo dígitos sin ceros a la izquierda.
+// Rechaza "0x2", "1e0", "1.0", "01", " 1 ", true, etc. (Number() aceptaría varios de ellos).
 function normalizarId(valor) {
-  if (typeof valor !== 'number' && typeof valor !== 'string') return null;
-  if (typeof valor === 'string' && valor.trim() === '') return null;
-  const id = Number(valor);
-  return Number.isInteger(id) && id > 0 ? id : null;
+  if (typeof valor === 'number') return Number.isInteger(valor) && valor > 0 ? valor : null;
+  if (typeof valor === 'string' && /^[1-9]\d*$/.test(valor)) return Number(valor);
+  return null;
 }
 
 function esFechaValida(texto) {
